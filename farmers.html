@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified Farmers | Mana Rythu Direct</title>
+  <meta name="description" content="Meet the regenerative organic farmers of Andhra Pradesh and Telangana. 72% direct payout guarantee, zero dalals, zero toxic sprays.">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="background-color: var(--forest-dark); color: var(--white);">
+
+  <!-- Sticky Navbar -->
+  <header id="main-navbar" class="main-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <div style="display: flex; align-items: center;">
+            <span class="brand-name">Mana Rythu</span>
+            <span class="brand-direct-tag">Farmers</span>
+          </div>
+          <span class="brand-tagline">రైతు నుండి మీ ఇంటికి నేరుగా</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Marketplace</a>
+        <a href="farmers.html" class="nav-link active">Our Farmers</a>
+        <a href="index.html#seed-to-plant" class="nav-link">Seed-to-Plant</a>
+        <a href="index.html#delivery-journey" class="nav-link">Doorstep Delivery</a>
+        <a href="index.html#krishi-ai" class="nav-link">Krishi AI</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="nav-btn" title="Switch Language">
+          <span>🌐</span>
+          <span>తెలుగు</span>
+        </button>
+        <button class="nav-btn cart-icon-btn cart-drawer-trigger" title="Harvest Basket">
+          <span>🧺</span>
+          <span class="badge-counter cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Farmers Content -->
+  <main style="padding-top: 130px; padding-bottom: 90px;">
+    <div class="container">
+      <!-- Page Banner -->
+      <div style="background: linear-gradient(135deg, #123B28, #1A4630); border: 1px solid rgba(255,255,255,0.15); border-radius: 28px; padding: 40px; margin-bottom: 50px; box-shadow: 0 20px 45px rgba(0,0,0,0.4);">
+        <div class="glass-pill" style="margin-bottom: 14px;">
+          <span>🌾</span>
+          <span>Regenerative Soil Guardians of AP & Telangana</span>
+        </div>
+        <h1 style="font-family: var(--font-serif); font-size: clamp(32px, 4.5vw, 54px); font-weight: 900; line-height: 1.15; margin-bottom: 12px;">
+          Meet Our 1,420+ Verified Organic Farmers
+        </h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: 16px; max-width: 720px; font-weight: 300;">
+          Every farmer on Mana Rythu has signed our radical transparency covenant. They practice 100% Subhash Palekar Natural Farming (ZBNF) or organic biodynamics, free from synthetic neurotoxins and chemical ripening agents.
+        </p>
+      </div>
+
+      <!-- Farmers Grid -->
+      <div id="farmers-directory-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 24px;">🧺</span>
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 800;">Your Harvest Basket</h3>
+        </div>
+      </div>
+      <button id="cart-drawer-close" style="font-size: 20px; color: #888;">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div id="cart-drawer-summary" class="cart-drawer-summary"></div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("farmers-directory-grid");
+      if (!grid || typeof featuredFarmers === "undefined") return;
+
+      function renderFarmers() {
+        const isTe = window.manaLanguage ? window.manaLanguage.isTelugu : false;
+
+        grid.innerHTML = featuredFarmers.map(farmer => {
+          const name = isTe && farmer.nameTe ? farmer.nameTe : farmer.name;
+          const quote = isTe && farmer.quoteTe ? farmer.quoteTe : farmer.quoteEn;
+          const crops = isTe && farmer.specialtyCropsTe ? farmer.specialtyCropsTe : farmer.specialtyCrops;
+
+          return `
+            <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 15px 35px rgba(0,0,0,0.3); transition: transform 0.3s ease;">
+              <div style="padding: 28px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                  <img src="${farmer.image}" alt="${name}" style="width: 74px; height: 74px; border-radius: 20px; object-fit: cover; border: 2px solid var(--harvest);" />
+                  <div>
+                    <span style="font-size: 11px; font-weight: 800; color: var(--fresh-light); text-transform: uppercase; background: rgba(128,188,65,0.18); padding: 2px 8px; border-radius: 4px;">
+                      ${farmer.badge}
+                    </span>
+                    <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 800; color: #FFF; margin-top: 4px;">
+                      ${name}
+                    </h3>
+                    <span style="font-size: 12px; color: rgba(255,255,255,0.7);">
+                      📍 ${farmer.village}, ${farmer.district}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: rgba(0,0,0,0.35); padding: 12px; border-radius: 16px; text-align: center; margin-bottom: 20px;">
+                  <div>
+                    <span style="font-size: 10px; color: #AAA; display: block;">Experience</span>
+                    <span style="font-weight: 800; color: #FFF; font-size: 14px;">${farmer.yearsOfFarming} yrs</span>
+                  </div>
+                  <div style="border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1);">
+                    <span style="font-size: 10px; color: #AAA; display: block;">Soil Area</span>
+                    <span style="font-weight: 800; color: #FFF; font-size: 14px;">${farmer.acres} acres</span>
+                  </div>
+                  <div>
+                    <span style="font-size: 10px; color: #AAA; display: block;">Rating</span>
+                    <span style="font-weight: 800; color: var(--harvest); font-size: 14px;">⭐ ${farmer.rating}</span>
+                  </div>
+                </div>
+
+                <!-- Organic Quote -->
+                <p style="font-size: 13px; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 20px; border-left: 3px solid var(--harvest); padding-left: 12px;">
+                  "${quote}"
+                </p>
+
+                <!-- Crops tags -->
+                <div style="margin-bottom: 12px;">
+                  <span style="font-size: 11px; font-weight: 700; color: #AAA; display: block; margin-bottom: 6px;">Specialty Crops:</span>
+                  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    ${crops.map(c => `
+                      <span style="font-size: 11px; padding: 4px 10px; border-radius: 9999px; background: rgba(255,255,255,0.08); color: var(--fresh-light); border: 1px solid rgba(255,255,255,0.12);">
+                        🌱 ${c}
+                      </span>
+                    `).join("")}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Button -->
+              <div style="padding: 16px 28px; background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 12px; color: var(--fresh-light);">Direct Earnings: <strong>${farmer.directEarningsTotal}</strong></span>
+                <a href="farmer-detail.html?id=${farmer.id}" class="btn-primary" style="padding: 8px 18px; font-size: 12px;">
+                  View Profile & Crops →
+                </a>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      renderFarmers();
+      window.addEventListener("languageChanged", renderFarmers);
+    });
+  </script>
+</body>
+</html>

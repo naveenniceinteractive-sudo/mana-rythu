@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Dawn Marketplace | Mana Rythu Direct</title>
+  <meta name="description" content="Explore fresh morning harvests direct from verified organic farmers in Andhra Pradesh & Telangana. 72% direct farmer settlement.">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="background-color: var(--forest-dark); color: var(--white);">
+
+  <!-- Sticky Navbar -->
+  <header id="main-navbar" class="main-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <div style="display: flex; align-items: center;">
+            <span class="brand-name" data-i18n="brand.name">Mana Rythu</span>
+            <span class="brand-direct-tag">Marketplace</span>
+          </div>
+          <span class="brand-tagline" data-i18n="brand.tagline">రైతు నుండి మీ ఇంటికి నేరుగా</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Marketplace</a>
+        <a href="farmers.html" class="nav-link">Our Farmers</a>
+        <a href="index.html#seed-to-plant" class="nav-link">Seed-to-Plant</a>
+        <a href="index.html#delivery-journey" class="nav-link">Doorstep Delivery</a>
+        <a href="index.html#krishi-ai" class="nav-link">Krishi AI</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="nav-btn" title="Switch Language">
+          <span>🌐</span>
+          <span>తెలుగు</span>
+        </button>
+        <a href="wishlist.html" class="nav-btn wishlist-icon-btn" title="Saved Produce">
+          <span>❤️</span>
+          <span class="badge-counter wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-icon-btn cart-drawer-trigger" title="Harvest Basket">
+          <span>🧺</span>
+          <span class="badge-counter cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Marketplace Main Content -->
+  <main style="padding-top: 130px; padding-bottom: 80px;">
+    <div class="container">
+      <!-- Page Banner Header -->
+      <div style="background: linear-gradient(135deg, #123B28, #1E5638); border: 1px solid rgba(255,255,255,0.15); border-radius: 28px; padding: 40px; margin-bottom: 40px; box-shadow: 0 20px 45px rgba(0,0,0,0.4); display: flex; flex-direction: column; gap: 12px;">
+        <div class="glass-pill" style="align-self: flex-start;">
+          <span>🌾</span>
+          <span>100% Traceable Direct Farm Harvests</span>
+        </div>
+        <h1 style="font-family: var(--font-serif); font-size: clamp(32px, 4.5vw, 52px); font-weight: 900; line-height: 1.15;">
+          Today's Morning Harvest Marketplace
+        </h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: 15px; max-width: 680px; font-weight: 300;">
+          All produce displayed below was harvested between 4:00 AM and 5:30 AM today by certified natural farmers across Andhra Pradesh and Telangana. 72% of your payment is directly deposited into their bank accounts.
+        </p>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 20px; margin-bottom: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+        <!-- Search input -->
+        <input type="text" id="shop-search" class="search-input-box" placeholder="Search produce, farmer, or village (e.g. Tomato, Guntur)..." style="max-width: 380px;" />
+
+        <!-- Category Filter Pills -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="filter-tab-btn active" data-cat="all">All Harvests</button>
+          <button class="filter-tab-btn" data-cat="vegetables">Vegetables</button>
+          <button class="filter-tab-btn" data-cat="fruits">Fruits</button>
+          <button class="filter-tab-btn" data-cat="grains">Aged Rice</button>
+          <button class="filter-tab-btn" data-cat="dairy_millets">Millets & Dairy</button>
+          <button class="filter-tab-btn" data-cat="spices">Spices</button>
+        </div>
+
+        <!-- Sort dropdown -->
+        <select id="shop-sort" style="background: #123B28; color: #FFF; border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 9999px; font-size: 13px; outline: none; cursor: pointer;">
+          <option value="harvest">Sort: Fresh Morning Harvest</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="rating">Rating: Highest Rated</option>
+        </select>
+      </div>
+
+      <!-- Marketplace Products Grid -->
+      <div id="shop-products-grid" class="products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 24px;">🧺</span>
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 800;">Your Harvest Basket</h3>
+          <span style="font-size: 11px; color: var(--earth);">Fresh from morning fields</span>
+        </div>
+      </div>
+      <button id="cart-drawer-close" style="font-size: 20px; color: #888;">✕</button>
+    </div>
+    <div id="cart-drawer-empty" style="flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center;">
+      <span style="font-size: 54px; margin-bottom: 12px;">🌱</span>
+      <h4 style="font-family: var(--font-serif); font-size: 18px; font-weight: 800;">Your Harvest Basket is Empty</h4>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div id="cart-drawer-summary" class="cart-drawer-summary"></div>
+  </aside>
+
+  <div id="mana-toast" class="mana-toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("shop-products-grid");
+      const searchInput = document.getElementById("shop-search");
+      const sortSelect = document.getElementById("shop-sort");
+
+      // Check url param for category (e.g. ?cat=vegetables)
+      const urlParams = new URLSearchParams(window.location.search);
+      let activeCategory = urlParams.get("cat") || "all";
+
+      // Mark tab active if matches url
+      document.querySelectorAll(".filter-tab-btn").forEach(btn => {
+        if (btn.getAttribute("data-cat") === activeCategory) {
+          document.querySelectorAll(".filter-tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
+      });
+
+      function renderShopProducts() {
+        if (!grid || typeof productsData === "undefined") return;
+        const isTe = window.manaLanguage ? window.manaLanguage.isTelugu : false;
+        const searchVal = searchInput?.value.toLowerCase().trim() || "";
+        const sortBy = sortSelect?.value || "harvest";
+
+        let filtered = productsData.filter(p => {
+          const matchCat = activeCategory === "all" ||
+            (activeCategory === "dairy_millets" ? (p.category === "dairy_millets" || p.category === "spices") : p.category === activeCategory);
+          const matchSearch = !searchVal ||
+            p.name.toLowerCase().includes(searchVal) ||
+            p.nameTe.toLowerCase().includes(searchVal) ||
+            p.farmerName.toLowerCase().includes(searchVal) ||
+            p.farmerLocation.toLowerCase().includes(searchVal);
+          return matchCat && matchSearch;
+        });
+
+        if (sortBy === "price_asc") filtered.sort((a,b) => a.price - b.price);
+        if (sortBy === "price_desc") filtered.sort((a,b) => b.price - a.price);
+        if (sortBy === "rating") filtered.sort((a,b) => b.rating - a.rating);
+
+        grid.innerHTML = filtered.map(prod => {
+          const title = isTe && prod.nameTe ? prod.nameTe : prod.name;
+          const isFav = window.manaWishlist && window.manaWishlist.has(prod.id);
+          return `
+            <div class="product-card" data-id="${prod.id}">
+              <div class="product-img-box">
+                <a href="product-detail.html?id=${prod.id}">
+                  <img src="${prod.image}" alt="${title}" loading="lazy" />
+                </a>
+                <span class="product-badge-tag">${prod.badges[0]}</span>
+                <button class="wishlist-heart-btn ${isFav ? 'active' : ''}" onclick="manaWishlist.toggle(productsData.find(p=>p.id==='${prod.id}')); this.classList.toggle('active');" title="Save">
+                  ♥
+                </button>
+              </div>
+              <div class="product-card-body">
+                <div>
+                  <a href="product-detail.html?id=${prod.id}">
+                    <h3 class="product-title">${title}</h3>
+                  </a>
+                  <div class="product-farmer-meta">
+                    👨‍🌾 <a href="farmer-detail.html?id=${prod.farmerId}" style="text-decoration: underline; color: var(--fresh-light);">${prod.farmerName}</a> • ${prod.farmerLocation}
+                  </div>
+                  <div style="font-size: 11px; color: var(--harvest); font-weight: 700; margin-bottom: 8px;">
+                    ⏱️ ${prod.harvestTime} • Brix: ${prod.brix || 'Natural'}
+                  </div>
+                  <div class="product-price-row">
+                    <span class="product-current-price">₹${prod.price}</span>
+                    <span style="font-size: 13px; color: rgba(255,255,255,0.7);">/ ${prod.unit}</span>
+                    <span class="product-original-price">₹${prod.originalPrice}</span>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button class="add-cart-action-btn" onclick="manaCart.addToCart(productsData.find(p=>p.id==='${prod.id}'), 1, event)">
+                    <span>🧺 Add to Basket</span>
+                  </button>
+                  <a href="product-detail.html?id=${prod.id}" style="padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,0.12); color: #FFF; font-size: 13px; font-weight: 700; display: flex; align-items: center;" title="View Details">
+                    🔍
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      renderShopProducts();
+
+      // Events
+      document.querySelectorAll(".filter-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeCategory = btn.getAttribute("data-cat");
+          renderShopProducts();
+        });
+      });
+
+      if (searchInput) searchInput.addEventListener("input", renderShopProducts);
+      if (sortSelect) sortSelect.addEventListener("change", renderShopProducts);
+      window.addEventListener("languageChanged", renderShopProducts);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* ==========================================================================
+   MANA RYTHU - SPECIALIZED MICRO-ANIMATIONS & KEYFRAMES (CSS3)
+   ========================================================================== */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(128, 188, 65, 0.3);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(128, 188, 65, 0.7);
+    opacity: 1;
+  }
+}
+
+@keyframes naturalSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes vanSuspension {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-2px);
+  }
+  75% {
+    transform: translateY(1.5px);
+  }
+}
+
+@keyframes dewGlint {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: naturalSway 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-van-suspension {
+  animation: vanSuspension 1.2s ease-in-out infinite;
+}
+
+.animate-dew-glint {
+  animation: dewGlint 2.5s ease-in-out infinite;
+}
+
+.animate-bounce-down {
+  animation: bounceDown 1.5s ease-in-out infinite;
+}

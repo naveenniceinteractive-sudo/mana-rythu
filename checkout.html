@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doorstep Checkout | Mana Rythu Direct</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body style="background-color: var(--forest-dark); color: var(--white);">
+
+  <header id="main-navbar" class="main-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <span class="brand-name">Mana Rythu</span>
+          <span class="brand-direct-tag">Checkout</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="shop.html" class="nav-btn">Marketplace</a>
+        <button id="lang-toggle-btn" class="nav-btn"><span>🌐</span> <span>తెలుగు</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 130px; padding-bottom: 90px;">
+    <div class="container">
+      <div style="margin-bottom: 30px;">
+        <h1 style="font-family: var(--font-serif); font-size: clamp(30px, 4vw, 48px); font-weight: 900; margin-bottom: 8px;">
+          Farm-to-Doorstep Checkout
+        </h1>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.75);">
+          Direct settlement with verified farmers of Andhra Pradesh & Telangana
+        </p>
+      </div>
+
+      <form id="checkout-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 36px;">
+        <!-- Left: Address & Slots -->
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <!-- Delivery Address -->
+          <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <span style="font-size: 20px;">📍</span>
+              <h3 style="font-family: var(--font-serif); font-size: 19px; font-weight: 800;">Delivery Address</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13px;">
+              <div>
+                <label style="display: block; margin-bottom: 6px; color: #BBB;">Street Address & Flat / House No.</label>
+                <input type="text" id="chk-address" value="Flat 402, Lotus Residency, Road No. 12, Banjara Hills" required style="width: 100%; padding: 12px 16px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: #FFF; outline: none;" />
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div>
+                  <label style="display: block; margin-bottom: 6px; color: #BBB;">City / District</label>
+                  <input type="text" id="chk-city" value="Hyderabad" required style="width: 100%; padding: 12px 16px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: #FFF; outline: none;" />
+                </div>
+                <div>
+                  <label style="display: block; margin-bottom: 6px; color: #BBB;">Pincode</label>
+                  <input type="text" id="chk-pincode" value="500034" required style="width: 100%; padding: 12px 16px; border-radius: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: #FFF; outline: none;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cold-Chain Slot Selection -->
+          <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <span style="font-size: 20px;">⏱️</span>
+              <h3 style="font-family: var(--font-serif); font-size: 19px; font-weight: 800;">Electric Van Delivery Slot</h3>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <label style="background: rgba(0,0,0,0.3); border: 2px solid var(--fresh); border-radius: 16px; padding: 16px; cursor: pointer; display: block;">
+                <input type="radio" name="slot" value="afternoon" checked style="accent-color: var(--fresh); margin-right: 6px;" />
+                <strong style="display: block; font-size: 14px; margin-top: 4px;">Today Afternoon</strong>
+                <span style="font-size: 12px; color: var(--fresh-light);">01:00 PM – 03:00 PM</span>
+              </label>
+              <label style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 16px; cursor: pointer; display: block;">
+                <input type="radio" name="slot" value="morning" style="accent-color: var(--fresh); margin-right: 6px;" />
+                <strong style="display: block; font-size: 14px; margin-top: 4px;">Tomorrow Dawn</strong>
+                <span style="font-size: 12px; color: #AAA;">06:30 AM – 08:30 AM</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Payment Options -->
+          <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <span style="font-size: 20px;">💳</span>
+              <h3 style="font-family: var(--font-serif); font-size: 19px; font-weight: 800;">Payment Mode</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+              <label style="background: rgba(0,0,0,0.3); border: 1px solid var(--fresh); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                <div>
+                  <input type="radio" name="payment" value="upi" checked style="accent-color: var(--fresh); margin-right: 8px;" />
+                  <strong>UPI / Instant Bank Pay (Direct Farmer Transfer)</strong>
+                </div>
+                <span style="color: var(--fresh-light); font-size: 11px; font-weight: 800;">⚡ Instant Payout</span>
+              </label>
+              <label style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                <div>
+                  <input type="radio" name="payment" value="cod" style="accent-color: var(--fresh); margin-right: 8px;" />
+                  <strong>Cash on Doorstep Delivery (COD)</strong>
+                </div>
+                <span style="color: #AAA; font-size: 11px;">Handover Cash</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Order Summary & 72% Farmer Settlement Guarantee -->
+        <div>
+          <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 28px; padding: 30px; position: sticky; top: 110px; box-shadow: 0 20px 45px rgba(0,0,0,0.4);">
+            <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 800; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+              Harvest Basket Summary
+            </h3>
+
+            <div id="checkout-items-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; max-height: 240px; overflow-y: auto;">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Farmer Payout Banner -->
+            <div style="background: rgba(128,188,65,0.15); border: 1px solid var(--fresh); border-radius: 16px; padding: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 26px;">🌾</span>
+              <div>
+                <span style="font-size: 12px; font-weight: 800; color: var(--fresh-light); display: block;">72% Direct Farmer Settlement Guarantee</span>
+                <span id="chk-farmer-amount" style="font-size: 20px; font-weight: 900; color: #FFF;">₹0</span>
+              </div>
+            </div>
+
+            <!-- Totals breakdown -->
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; color: #CCC;">
+                <span>Harvest Subtotal:</span>
+                <span id="chk-subtotal">₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; color: #CCC;">
+                <span>Cold-Chain Electric Transit:</span>
+                <span id="chk-delivery">₹0</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 900; color: #FFF; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px;">
+                <span>Grand Total:</span>
+                <span id="chk-grand-total">₹0</span>
+              </div>
+            </div>
+
+            <button type="submit" id="place-order-btn" class="btn-primary" style="width: 100%; padding: 18px; font-size: 16px; justify-content: center;">
+              Place Farm Order →
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const itemsList = document.getElementById("checkout-items-list");
+      const subtotalEl = document.getElementById("chk-subtotal");
+      const deliveryEl = document.getElementById("chk-delivery");
+      const grandTotalEl = document.getElementById("chk-grand-total");
+      const farmerAmountEl = document.getElementById("chk-farmer-amount");
+      const form = document.getElementById("checkout-form");
+
+      function updateCheckoutSummary() {
+        const items = window.manaCart ? window.manaCart.items : [];
+        const { subtotal, farmerShare, delivery, grandTotal } = window.manaCart ? window.manaCart.calculateTotals() : { subtotal: 0, farmerShare: 0, delivery: 0, grandTotal: 0 };
+
+        if (items.length === 0) {
+          itemsList.innerHTML = `<p style="font-size: 13px; color: #AAA;">Your harvest basket is empty. <a href="shop.html" style="color: var(--fresh-light); text-decoration: underline;">Explore Produce</a></p>`;
+        } else {
+          itemsList.innerHTML = items.map(item => `
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+              <div>
+                <strong>${item.name}</strong> × ${item.quantity}
+                <span style="display: block; font-size: 11px; color: #888;">${item.farmerName}</span>
+              </div>
+              <span>₹${item.price * item.quantity}</span>
+            </div>
+          `).join("");
+        }
+
+        subtotalEl.textContent = `₹${subtotal}`;
+        deliveryEl.textContent = delivery === 0 ? "FREE" : `₹${delivery}`;
+        grandTotalEl.textContent = `₹${grandTotal}`;
+        farmerAmountEl.textContent = `₹${farmerShare}`;
+      }
+
+      updateCheckoutSummary();
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const items = window.manaCart ? window.manaCart.items : [];
+        if (items.length === 0) {
+          alert("Your harvest basket is empty! Add products first.");
+          window.location.href = "shop.html";
+          return;
+        }
+
+        const btn = document.getElementById("place-order-btn");
+        btn.textContent = "Processing Order...";
+        btn.disabled = true;
+
+        if (typeof confetti === "function") {
+          confetti({
+            particleCount: 120,
+            spread: 80,
+            origin: { y: 0.6 },
+            colors: ["#80BC41", "#E8AE42", "#123B28"]
+          });
+        }
+
+        setTimeout(() => {
+          const orderId = "MR-" + Math.floor(100000 + Math.random() * 900000);
+          window.manaCart.clearCart();
+          window.location.href = `orders.html?id=${orderId}`;
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

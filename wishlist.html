@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Harvest Wishlist | Mana Rythu Direct</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="background-color: var(--forest-dark); color: var(--white);">
+
+  <header id="main-navbar" class="main-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <span class="brand-name">Mana Rythu</span>
+          <span class="brand-direct-tag">Wishlist</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Marketplace</a>
+        <a href="farmers.html" class="nav-link">Our Farmers</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="nav-btn"><span>🌐</span> <span>తెలుగు</span></button>
+        <button class="nav-btn cart-icon-btn cart-drawer-trigger">
+          <span>🧺</span> <span class="badge-counter cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 130px; padding-bottom: 90px;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span class="glass-pill" style="margin-bottom: 8px;">❤️ Saved Farm Crops</span>
+          <h1 style="font-family: var(--font-serif); font-size: clamp(28px, 4vw, 44px); font-weight: 900;">
+            Your Harvest Wishlist
+          </h1>
+        </div>
+        <button id="move-all-to-basket-btn" class="btn-primary" style="display: none;">
+          Move All to Basket 🧺
+        </button>
+      </div>
+
+      <div id="wishlist-grid-view">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 800;">Your Harvest Basket</h3>
+      <button id="cart-drawer-close">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div id="cart-drawer-summary" class="cart-drawer-summary"></div>
+  </aside>
+
+  <div id="mana-toast" class="mana-toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const view = document.getElementById("wishlist-grid-view");
+      const moveAllBtn = document.getElementById("move-all-to-basket-btn");
+
+      function renderWishlist() {
+        const items = window.manaWishlist ? window.manaWishlist.items : [];
+        if (items.length === 0) {
+          if (moveAllBtn) moveAllBtn.style.display = "none";
+          view.innerHTML = `
+            <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 28px; padding: 50px; text-align: center; max-width: 580px; margin: 40px auto;">
+              <span style="font-size: 54px; display: block; margin-bottom: 12px;">🌱</span>
+              <h3 style="font-family: var(--font-serif); font-size: 22px; font-weight: 800; margin-bottom: 8px;">No Saved Crops Yet</h3>
+              <p style="color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 24px;">Explore our morning harvests and click the heart icon on your favorite heirloom produce.</p>
+              <a href="shop.html" class="btn-primary">Explore Marketplace →</a>
+            </div>
+          `;
+          return;
+        }
+
+        if (moveAllBtn) moveAllBtn.style.display = "inline-flex";
+
+        view.innerHTML = `
+          <div class="products-grid">
+            ${items.map(prod => `
+              <div class="product-card">
+                <div class="product-img-box">
+                  <a href="product-detail.html?id=${prod.id}"><img src="${prod.image}" alt="${prod.name}" /></a>
+                  <button class="wishlist-heart-btn active" onclick="manaWishlist.toggle(productsData.find(p=>p.id==='${prod.id}')); renderWishlist();" title="Remove">
+                    ♥
+                  </button>
+                </div>
+                <div class="product-card-body">
+                  <h3 class="product-title">${prod.name}</h3>
+                  <div class="product-farmer-meta">👨‍🌾 ${prod.farmerName} • ${prod.farmerLocation}</div>
+                  <div class="product-price-row">
+                    <span class="product-current-price">₹${prod.price}</span>
+                    <span style="font-size: 13px; color: #AAA;">/ ${prod.unit}</span>
+                  </div>
+                  <button class="add-cart-action-btn" onclick="manaCart.addToCart(productsData.find(p=>p.id==='${prod.id}'), 1, event)">
+                    🧺 Add to Basket
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      window.renderWishlist = renderWishlist;
+      renderWishlist();
+
+      if (moveAllBtn) {
+        moveAllBtn.addEventListener("click", () => {
+          const items = window.manaWishlist ? window.manaWishlist.items : [];
+          items.forEach(p => window.manaCart.addToCart(p, 1));
+          alert("All saved crops added to your Harvest Basket!");
+        });
+      }
+    });
+  </script>
+</body>
+</html>

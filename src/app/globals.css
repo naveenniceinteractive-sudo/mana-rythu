@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --forest: #123B28;
+    --forest-dark: #0A1F15;
+    --forest-deep: #06140E;
+    --forest-light: #1E5638;
+    --fresh: #80BC41;
+    --fresh-light: #A4D66A;
+    --harvest: #E8AE42;
+    --harvest-light: #F7D082;
+    --cream: #F7F5EC;
+    --cream-card: #FAF8F2;
+    --earth: #78543B;
+    --tomato: #E53935;
+    --tomato-dark: #C62828;
+  }
+}
+
+/* Custom Typography & Utility Classes */
+.font-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-sans {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+.font-telugu {
+  font-family: var(--font-noto-telugu), var(--font-outfit), sans-serif;
+}
+
+/* Fullscreen Cinematic Overlays */
+.cinematic-overlay-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(6, 20, 14, 0.72) 0%,
+    rgba(10, 31, 21, 0.55) 40%,
+    rgba(18, 59, 40, 0.65) 75%,
+    rgba(6, 20, 14, 0.92) 100%
+  );
+}
+
+.cinematic-overlay-golden {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 31, 21, 0.6) 0%,
+    rgba(232, 174, 66, 0.25) 50%,
+    rgba(6, 20, 14, 0.85) 100%
+  );
+}
+
+.cinematic-overlay-light {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 245, 236, 0.88) 0%,
+    rgba(250, 248, 242, 0.75) 50%,
+    rgba(247, 245, 236, 0.95) 100%
+  );
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-panel-dark {
+  background: rgba(10, 31, 21, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(128, 188, 65, 0.25);
+}
+
+.glass-pill {
+  background: rgba(247, 245, 236, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(18, 59, 40, 0.15);
+}
+
+/* Photoreal Object Blend Modes */
+.blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A1F15;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #80BC41;
+  border-radius: 9999px;
+  border: 2px solid #0A1F15;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A4D66A;
+}
+
+/* Subtle Floating Animations */
+@keyframes naturalFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+.animate-natural-float {
+  animation: naturalFloat 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 4s ease-in-out infinite;
+}

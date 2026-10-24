@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Mana Rythu Direct</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="background-color: var(--forest-dark); color: var(--white);">
+
+  <header id="main-navbar" class="main-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <span class="brand-name">Mana Rythu</span>
+          <span class="brand-tagline">రైతు నుండి మీ ఇంటికి నేరుగా</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Marketplace</a>
+        <a href="farmers.html" class="nav-link">Our Farmers</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="nav-btn"><span>🌐</span> <span>తెలుగు</span></button>
+        <button class="nav-btn cart-icon-btn cart-drawer-trigger">
+          <span>🧺</span> <span class="badge-counter cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 130px; padding-bottom: 90px;">
+    <div class="container">
+      <div style="margin-bottom: 24px;">
+        <a href="shop.html" style="font-size: 13px; font-weight: 700; color: var(--fresh-light);">← Back to Marketplace</a>
+      </div>
+
+      <div id="product-detail-view">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 800;">Your Harvest Basket</h3>
+      <button id="cart-drawer-close">✕</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-items"></div>
+    <div id="cart-drawer-summary" class="cart-drawer-summary"></div>
+  </aside>
+
+  <div id="mana-toast" class="mana-toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("product-detail-view");
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = urlParams.get("id") || "p1";
+      const product = productsData.find(p => p.id === prodId) || productsData[0];
+      let qty = 1;
+
+      function renderProduct() {
+        if (!container || !product) return;
+        const isTe = window.manaLanguage ? window.manaLanguage.isTelugu : false;
+        const title = isTe && product.nameTe ? product.nameTe : product.name;
+        const desc = isTe && product.descriptionTe ? product.descriptionTe : product.description;
+
+        // Farmer breakdown math
+        const farmerShare = Math.round(product.price * 0.72);
+        const packaging = Math.round(product.price * 0.08);
+        const deliveryTransit = Math.round(product.price * 0.12);
+        const platform = Math.round(product.price * 0.08);
+
+        container.innerHTML = `
+          <div style="background: #123B28; border: 1px solid rgba(255,255,255,0.15); border-radius: 32px; padding: 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.5); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+            <!-- Left: Large Image & Badges -->
+            <div style="position: relative; border-radius: 24px; overflow: hidden; background: #000; height: 420px; box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+              <img src="${product.image}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;" />
+              <div style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 6px;">
+                ${product.badges.map(b => `
+                  <span style="padding: 4px 12px; border-radius: 9999px; background: rgba(0,0,0,0.75); color: var(--fresh-light); font-size: 11px; font-weight: 800; backdrop-filter: blur(8px);">
+                    ${b}
+                  </span>
+                `).join("")}
+              </div>
+            </div>
+
+            <!-- Right: Details, Farmer Origin, Transparency -->
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="glass-pill" style="margin-bottom: 12px;">⏱️ Harvested: ${product.harvestTime}</span>
+                <h1 style="font-family: var(--font-serif); font-size: clamp(28px, 4vw, 42px); font-weight: 900; line-height: 1.15; margin: 8px 0 14px 0;">
+                  ${title}
+                </h1>
+                <p style="font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 20px;">
+                  ${desc}
+                </p>
+
+                <!-- Farmer Card Box -->
+                <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15); border-radius: 18px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <span style="font-size: 11px; color: #AAA; text-transform: uppercase;">Direct Grower:</span>
+                    <h4 style="font-size: 16px; font-weight: 800; color: #FFF;">👨‍🌾 ${product.farmerName}</h4>
+                    <span style="font-size: 12px; color: var(--fresh-light);">📍 ${product.farmerLocation} (${product.farmDistance})</span>
+                  </div>
+                  <a href="farmer-detail.html?id=${product.farmerId}" style="font-size: 12px; font-weight: 700; color: var(--harvest); text-decoration: underline;">
+                    Farmer Story →
+                  </a>
+                </div>
+
+                <!-- Price Transparency Breakdown -->
+                <div style="background: rgba(128,188,65,0.12); border: 1px solid var(--fresh); border-radius: 18px; padding: 18px; margin-bottom: 24px;">
+                  <span style="font-size: 12px; font-weight: 800; color: var(--fresh-light); display: block; margin-bottom: 8px;">
+                    100% Price Transparency Breakdown (per ${product.unit}):
+                  </span>
+                  <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px;">
+                    <span>Direct Farmer Settlement (72%):</span>
+                    <strong style="color: var(--fresh);">₹${farmerShare}</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12px; color: #BBB; margin-bottom: 4px;">
+                    <span>Cold-Chain Transit & Logistics:</span>
+                    <span>₹${deliveryTransit}</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 12px; color: #BBB;">
+                    <span>Breathable Straw Packaging:</span>
+                    <span>₹${packaging}</span>
+                  </div>
+                </div>
+
+                <!-- Price & Quantity Selector -->
+                <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px;">
+                  <span style="font-size: 36px; font-weight: 900; color: var(--fresh-light);">₹${product.price}</span>
+                  <span style="font-size: 16px; color: rgba(255,255,255,0.6);">/ ${product.unit}</span>
+                  <span style="font-size: 16px; color: rgba(255,255,255,0.4); text-decoration: line-through;">₹${product.originalPrice}</span>
+                </div>
+              </div>
+
+              <!-- Quantity & Add to Cart -->
+              <div style="display: flex; gap: 14px; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 10px 18px; border-radius: 9999px;">
+                  <button onclick="changeQty(-1)" style="font-size: 18px; font-weight: 900; color: #FFF;">-</button>
+                  <span id="detail-qty" style="font-size: 16px; font-weight: 800; min-width: 20px; text-align: center;">1</span>
+                  <button onclick="changeQty(1)" style="font-size: 18px; font-weight: 900; color: #FFF;">+</button>
+                </div>
+
+                <button class="add-cart-action-btn" onclick="manaCart.addToCart(product, qty, event); this.textContent='✓ Added to Basket!';" style="flex: 1; padding: 16px; font-size: 15px;">
+                  🧺 Add to Harvest Basket
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      window.changeQty = function(delta) {
+        qty = Math.max(1, qty + delta);
+        const qtyEl = document.getElementById("detail-qty");
+        if (qtyEl) qtyEl.textContent = qty;
+      };
+
+      renderProduct();
+      window.addEventListener("languageChanged", renderProduct);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mana Rythu | Direct From Living Soil to Your Doorstep</title>
+  <meta name="description"
+    content="Experience Mana Rythu - India's most transparent direct farmer-to-consumer cinematic marketplace. 72% direct revenue to verified farmers in Andhra Pradesh and Telangana.">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- GSAP 3 & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Global Scroll Progress Bar -->
+  <div id="global-scroll-progress" class="global-scroll-progress"></div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header id="main-navbar" class="main-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">🌱</div>
+        <div class="brand-titles">
+          <div style="display: flex; align-items: center;">
+            <span class="brand-name" data-i18n="brand.name">Mana Rythu</span>
+            <span class="brand-direct-tag">Direct</span>
+          </div>
+          <span class="brand-tagline" data-i18n="brand.tagline">రైతు నుండి మీ ఇంటికి నేరుగా</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="shop.html" class="nav-link" data-i18n="nav.marketplace">Marketplace</a>
+        <a href="#seed-to-plant" class="nav-link" data-i18n="nav.journey">Seed-to-Plant</a>
+        <a href="#categories" class="nav-link" data-i18n="nav.categories">Categories</a>
+        <a href="farmers.html" class="nav-link" data-i18n="nav.farmers">Farmers</a>
+        <a href="#how-it-works" class="nav-link" data-i18n="nav.howItWorks">How It Works</a>
+        <a href="#delivery-journey" class="nav-link" data-i18n="nav.vanDelivery">Doorstep Delivery</a>
+        <a href="#krishi-ai" class="nav-link" data-i18n="nav.aiAssistant">Krishi AI</a>
+        <a href="#smart-pricing" class="nav-link" data-i18n="nav.pricing">Pricing Transparency</a>
+        <a href="#seasonal-harvest" class="nav-link" data-i18n="nav.seasons">Seasons</a>
+      </nav>
+
+      <!-- Nav Action Controls -->
+      <div class="nav-actions">
+        <!-- Ambient Farm Audio Button -->
+        <button id="ambient-audio-btn" class="nav-btn" title="Toggle Farm Soundscape">
+          <span>🔊</span>
+          <span class="audio-label">Farm Sounds</span>
+        </button>
+
+        <!-- Bilingual Language Toggle Button -->
+        <button id="lang-toggle-btn" class="nav-btn" title="Switch Language">
+          <span>🌐</span>
+          <span>తెలుగు</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <a href="wishlist.html" class="nav-btn wishlist-icon-btn" title="Saved Produce">
+          <span>❤️</span>
+          <span class="badge-counter wishlist-count-badge">0</span>
+        </a>
+
+        <!-- Cart Drawer Trigger Button -->
+        <button class="nav-btn cart-icon-btn cart-drawer-trigger" title="Harvest Basket">
+          <span>🧺</span>
+          <span class="badge-counter cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SINGLE CONTINUOUS HERITAGE SEED & LIVING PLANT JOURNEY
+       One single seed starts in Hero, travels naturally downward on scroll,
+       lands exactly on the fertile soil in the pinned Seed-to-Plant section,
+       grows roots downward into the earth, emerges a sprout upward from the exact
+       same position, matures into a realistic plant, and smoothly reverses on scroll up.
+       ========================================================================= -->
+  <div id="continuous-seed-journey" class="continuous-seed-journey">
+    <div id="continuous-seed-wrapper" class="continuous-seed-wrapper">
+      <!-- Sunlight halo glow -->
+      <div id="continuous-plant-halo" class="continuous-plant-halo"></div>
+
+      <!-- Seed Contact Shadow on Soil -->
+      <div id="continuous-soil-shadow" class="continuous-soil-shadow"></div>
+
+      <!-- The Single Heritage Heirloom Seed -->
+      <div id="continuous-seed-ball" class="continuous-seed-ball" title="Heritage Heirloom Seed">
+        <img src="images/photoreal_seed.jpg" alt="Heritage Heirloom Seed" />
+      </div>
+
+      <!-- Heritage Heirloom Seed Pill Badge (visible in Hero, fades into soil) -->
+      <div id="continuous-seed-label" class="continuous-seed-label">
+        <span class="pulse-dot"></span>
+        <span>Heritage Heirloom Seed</span>
+      </div>
+
+      <!-- Roots growing downward into the earth -->
+      <svg id="continuous-roots" class="continuous-roots-svg" viewBox="0 0 200 140">
+        <path d="M100,5 Q98,45 100,85 Q102,110 100,135" stroke="#FFF8E7" stroke-width="3.2" fill="none"
+          stroke-linecap="round" />
+        <path d="M100,25 Q78,50 55,75 Q42,95 30,110" stroke="#F5EFE6" stroke-width="2.2" fill="none"
+          stroke-linecap="round" />
+        <path d="M100,30 Q122,55 145,80 Q158,100 170,115" stroke="#F5EFE6" stroke-width="2.2" fill="none"
+          stroke-linecap="round" />
+        <path
+          d="M100,55 Q85,75 70,95 M100,60 Q115,80 130,100 M80,65 Q65,85 55,105 M120,70 Q135,90 145,110 M100,90 Q90,115 80,130 M100,95 Q110,120 120,135"
+          stroke="#FFFFFF" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.85" />
+      </svg>
+
+      <!-- Sprout shoot & leaves emerging upward from the exact same position -->
+      <svg id="continuous-sprout-svg" class="continuous-sprout-svg" viewBox="0 0 200 200">
+        <path id="continuous-sprout-stem" d="M100,190 Q97,140 100,90 Q102,50 100,20" stroke="#80BC41" stroke-width="6"
+          fill="none" stroke-linecap="round" />
+        <path id="continuous-leaf-left" d="M100,100 C80,80 50,75 30,85 C45,100 75,110 100,105 Z" fill="#80BC41"
+          stroke="#A4D66A" stroke-width="1.5" />
+        <path id="continuous-leaf-right" d="M100,75 C120,55 150,50 170,60 C155,75 125,85 100,80 Z" fill="#6ca331"
+          stroke="#80BC41" stroke-width="1.5" />
+      </svg>
+
+      <!-- Mature Photorealistic Rice Plant -->
+      <div id="continuous-mature-plant" class="continuous-mature-plant">
+        <img src="images/photoreal_rice_seedling.jpg" alt="Living Rice Paddy Plant" />
+        <div class="dewdrop-pill">
+          <span>💧</span>
+          <span>Living Earth Roots & Dew</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       1. HERO SECTION: Seamless Heritage Seed Descent into Living Soil
+       ========================================================================= -->
+  <section id="hero" class="hero-section">
+    <!-- Fullscreen Real Agricultural Photography Background -->
+    <div id="hero-bg" class="hero-bg-wrapper">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=85"
+        alt="Golden Indian Sunrise Farmlands" class="hero-bg-img" />
+      <div class="cinematic-overlay-dark"></div>
+    </div>
+
+    <!-- Editorial Story Content -->
+    <div class="hero-content">
+      <div class="glass-pill animate-glow" style="margin-bottom: 24px;">
+        <span>🌱</span>
+        <span data-i18n="hero.badge">Pure Living Soil • 100% Direct to Farmer</span>
+      </div>
+
+      <p class="hero-subheading-te" data-i18n="hero.secondaryHeading">
+        రైతు నుండి మీ ఇంటికి నేరుగా
+      </p>
+
+      <h1 class="hero-title" data-i18n="hero.mainHeading">
+        From Our <span class="highlight">Living Soil</span> to Your Soul.
+      </h1>
+
+      <p class="hero-description" data-i18n="hero.description">
+        Experience India's most transparent agricultural journey. Freshly harvested heirloom produce, cold-pressed oils,
+        and heritage grains delivered within hours of sunrise.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-cta-group">
+        <a href="shop.html" class="btn-primary">
+          <span data-i18n="hero.ctaPrimary">Explore Today's Harvest</span>
+          <span>↓</span>
+        </a>
+        <a href="farmers.html" class="btn-secondary">
+          <span data-i18n="hero.ctaSecondary">Meet Verified Farmers</span>
+          <span>🌾</span>
+        </a>
+      </div>
+
+      <!-- Live Farm Statistics Bar -->
+      <div class="hero-stats-bar">
+        <div class="hero-stat-item">
+          <span style="color: var(--fresh);">👨‍🌾</span>
+          <span data-i18n="hero.liveStats.activeFarmers">1,420+ Certified Farmers</span>
+        </div>
+        <div class="hero-stat-item"
+          style="border-left: 1px solid rgba(255,255,255,0.15); border-right: 1px solid rgba(255,255,255,0.15);">
+          <span style="color: var(--harvest);">☀️</span>
+          <span data-i18n="hero.liveStats.morningHarvests">Harvested 4:30 AM Today</span>
+        </div>
+        <div class="hero-stat-item">
+          <span style="color: var(--fresh);">⚡</span>
+          <span data-i18n="hero.liveStats.co2Saved">Zero Middlemen Mandis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heritage Seed Descent Anchor & Scroll Hint -->
+    <div class="hero-seed-track">
+      <!-- Soil Bed Mound -->
+      <div class="hero-soil-mound">
+        <div class="scroll-hint-pill">
+          <span data-i18n="hero.scrollHint">Scroll to witness seed germination</span>
+          <span class="animate-bounce-down">↓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       2. SEED-TO-PLANT: Seamless Soil Germination & Living Rice Plant Growth
+       ========================================================================= -->
+  <section id="seed-to-plant" class="seed-to-plant-section">
+    <!-- Macro Agricultural Dewy Soil Background: Photorealistic Soil & Agricultural Field -->
+    <div id="plant-bg-image" class="plant-bg-wrapper">
+      <img src="images/photoreal_field_soil.jpg" alt="Photorealistic Indian Farm Fertile Soil Field at Sunrise" />
+      <div class="cinematic-overlay-dark"></div>
+    </div>
+
+    <!-- Soft Golden Sunbeams Halo -->
+    <div id="plant-sunbeams" class="plant-sunbeams"></div>
+
+    <div class="plant-grid">
+      <!-- Left Side: Editorial Story Card -->
+      <div id="plant-text-card" class="plant-story-card">
+        <div class="glass-pill" style="margin-bottom: 16px;">
+          <span>✨</span>
+          <span data-i18n="seedToPlant.badge">Photorealistic Soil Germination</span>
+        </div>
+
+        <h2 class="plant-story-title" data-i18n="seedToPlant.heading">
+          Every Great Harvest Begins with a <span style="color: var(--fresh); font-style: italic;">Living Seed.</span>
+        </h2>
+
+        <p class="plant-story-desc" data-i18n="seedToPlant.subheading">
+          Beneath fertile dark loam, life awakens. Watch our indigenous heirloom seed break through the earth and grow
+          into a healthy, tillered rice seedling with tender root tendrils drinking from living soil.
+        </p>
+
+        <div class="plant-features-list">
+          <div class="plant-feature-item">
+            <span style="font-size: 20px;">🌱</span>
+            <span data-i18n="seedToPlant.points.seed">Native Non-GMO Heirloom Seed Varieties</span>
+          </div>
+          <div class="plant-feature-item">
+            <span style="font-size: 20px;">💧</span>
+            <span data-i18n="seedToPlant.points.soil">Microbial-Rich Living Earth with Jeevamrutham</span>
+          </div>
+          <div class="plant-feature-item">
+            <span style="font-size: 20px;">☀️</span>
+            <span data-i18n="seedToPlant.points.sunlight">Abundant Morning Solar Photosynthesis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Natural Soil Landing Stage Area for Single Continuous Seed -->
+      <div class="plant-earth-stage">
+        <div class="soil-landing-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. SIGNATURE FLYING HEIRLOOM TOMATO
+       ========================================================================= -->
+  <section id="flying-tomato" class="flying-tomato-section">
+    <!-- Country Garden Background -->
+    <div id="tomato-bg-image" class="hero-bg-wrapper">
+      <img src="https://images.unsplash.com/photo-1592417817098-8f3d6910985b?auto=format&fit=crop&w=2400&q=85"
+        alt="Country Heirloom Tomato Farm" class="hero-bg-img" />
+      <div class="cinematic-overlay-dark"></div>
+    </div>
+
+    <div class="container text-center" style="position: relative; z-index: 10;">
+      <div class="glass-pill" style="margin-bottom: 16px;">
+        <span>🍅</span>
+        <span>Signature Organic Produce</span>
+      </div>
+      <h2 class="hero-title" style="font-size: clamp(30px, 4.5vw, 56px); margin-bottom: 14px;">
+        Guntur Heirloom Vine-Ripened Tomato
+      </h2>
+      <p style="color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 40px auto; font-weight: 300;">
+        Plucked at 4:30 AM with fresh morning dewdrops intact. Measured with a laser refractometer at 6.8° Brix natural
+        sweetness.
+      </p>
+
+      <!-- Flying 3D Tomato Object -->
+      <div style="position: relative; height: 380px; display: flex; align-items: center; justify-content: center;">
+        <div id="tomato-container" class="tomato-stage-box">
+          <img id="tomato-img-rotator" src="images/photoreal_tomato.jpg" alt="Heirloom Tomato" class="tomato-rotator" />
+
+          <!-- Telemetry Badges -->
+          <div id="tomato-badge-1" class="floating-telemetry-badge" style="top: -15px; left: -25px;">
+            <span>⏱️</span>
+            <span>Harvested 04:30 AM Today</span>
+          </div>
+          <div id="tomato-badge-2" class="floating-telemetry-badge" style="bottom: -15px; right: -25px;">
+            <span>🧪</span>
+            <span>6.8° Brix Natural Sugar</span>
+          </div>
+          <div id="tomato-badge-3" class="floating-telemetry-badge" style="top: 45%; right: -35px;">
+            <span>📍</span>
+            <span>Chebrolu Farm (42 km away)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. CATEGORIES SECTION
+       ========================================================================= -->
+  <section id="categories" class="categories-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag" data-i18n="nav.categories">Categories</span>
+        <h2 class="section-heading">Browse Our Fresh Farm Categories</h2>
+        <p class="section-desc">From heirloom country vegetables to single-origin cold-pressed oils and canal-irrigated
+          heritage rice varieties.</p>
+      </div>
+
+      <div class="categories-grid" id="categories-grid-container">
+        <!-- Rendered dynamically via js/data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. FEATURED PRODUCTS MARKETPLACE
+       ========================================================================= -->
+  <section id="featured-products" class="featured-products-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 30px;">
+        <div class="glass-pill" style="margin-bottom: 12px;">
+          <span>✨</span>
+          <span data-i18n="products.badge">Dawn Harvest Produce</span>
+        </div>
+        <h2 class="hero-title" style="font-size: clamp(30px, 4vw, 50px); margin-bottom: 10px;"
+          data-i18n="products.heading">
+          Direct from This Morning's Harvest
+        </h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;" data-i18n="products.subheading">
+          Plucked before sunrise, packed without chemical preservatives, credited to farmers instantly.
+        </p>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="filters-toolbar">
+        <input type="text" id="marketplace-search-input" class="search-input-box"
+          placeholder="Search crops or farmers (e.g. Tomato, Rice)..." />
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="filter-tab-btn active" data-category="all" data-i18n="products.filterAll">All Harvests</button>
+          <button class="filter-tab-btn" data-category="vegetables"
+            data-i18n="products.filterVegetables">Vegetables</button>
+          <button class="filter-tab-btn" data-category="fruits" data-i18n="products.filterFruits">Native Fruits</button>
+          <button class="filter-tab-btn" data-category="grains" data-i18n="products.filterGrains">Aged Rice &
+            Grains</button>
+          <button class="filter-tab-btn" data-category="dairy_millets" data-i18n="products.filterDairyMillets">Millets &
+            Dairy</button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid-container" class="products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. FARMER BASKET SECTION
+       ========================================================================= -->
+  <section id="farmer-basket" class="farmer-basket-section">
+    <!-- Rustic Barn Harvest Background -->
+    <div id="basket-bg-image" class="hero-bg-wrapper">
+      <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=2400&q=85"
+        alt="Harvest Station" class="hero-bg-img" />
+      <div class="cinematic-overlay-dark"></div>
+    </div>
+
+    <div class="container text-center" style="position: relative; z-index: 10;">
+      <div class="glass-pill" style="margin-bottom: 16px;">
+        <span>🧺</span>
+        <span>Traditional Bamboo Weaving</span>
+      </div>
+      <h2 class="hero-title" style="font-size: clamp(30px, 4vw, 52px); margin-bottom: 12px;">
+        Packed with Love in Handwoven Bamboo
+      </h2>
+      <p style="color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 40px auto; font-weight: 300;">
+        Zero plastic bags. We pack each morning's harvest in breathable, organic palm and bamboo baskets made by village
+        artisans.
+      </p>
+
+      <div style="position: relative; height: 380px; display: flex; align-items: center; justify-content: center;">
+        <div id="bamboo-basket-container" class="basket-card-wrapper">
+          <img src="images/photoreal_basket.jpg" alt="Artisan Bamboo Basket" />
+          <img id="basket-falling-tomato" src="images/photoreal_tomato.jpg" alt="Tomato into basket"
+            class="falling-tomato-in-basket" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. HOW IT WORKS SECTION (4 STEPS)
+       ========================================================================= -->
+  <section id="how-it-works" class="how-it-works-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag" data-i18n="nav.howItWorks">How It Works</span>
+        <h2 class="section-heading">Direct Farm-to-Doorstep Journey</h2>
+        <p class="section-desc">From 4:30 AM field harvest to afternoon electric van doorstep handover.</p>
+      </div>
+
+      <div class="steps-timeline-grid">
+        <div class="step-card">
+          <div class="step-number-pill">01</div>
+          <h3 class="step-title">Dawn Farm Harvest</h3>
+          <p class="step-desc">Farmers pick crops at 4:30 AM when plants have peak moisture and natural cell turgor.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number-pill">02</div>
+          <h3 class="step-title">Zero-Chemical Grading</h3>
+          <p class="step-desc">Tested with handheld Brix meters and packed into breathable straw boxes within 60
+            minutes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number-pill">03</div>
+          <h3 class="step-title">Electric Cold-Chain Van</h3>
+          <p class="step-desc">Kept at 12°C in refrigerated electric transit across countryside highways to city hubs.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-number-pill">04</div>
+          <h3 class="step-title">Direct Doorstep Handover</h3>
+          <p class="step-desc">Delivered to your home veranda; 72% of payment is deposited into the farmer's bank
+            account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. REALISTIC DELIVERY VAN JOURNEY & DOORSTEP HANDOVER
+       ========================================================================= -->
+  <section id="delivery-journey" class="delivery-journey-section">
+    <!-- Countryside Scenic Road Photographic Background -->
+    <div id="delivery-road-bg" class="road-scene-bg">
+      <img src="images/photoreal_van_road.jpg" alt="Mana Rythu Electric Van on Countryside Road" />
+      <div class="cinematic-overlay-road"></div>
+    </div>
+
+    <!-- Top Editorial Header & Live Telemetry -->
+    <div class="delivery-header-overlay">
+      <div class="glass-pill" style="margin-bottom: 12px;">
+        <span>🚚</span>
+        <span data-i18n="deliveryVan.badge">Cold-Chain Zero-Emission Transit</span>
+      </div>
+      <h2 class="delivery-title" data-i18n="deliveryVan.heading">
+        From Rural Fields to Your Front Porch.
+      </h2>
+      <p style="color: rgba(255,255,255,0.9); font-size: 15px; max-width: 640px; margin: 0 auto 16px auto;"
+        data-i18n="deliveryVan.subheading">
+        Our temperature-controlled electric vehicle glides along scenic country roads, keeping harvests crisp and
+        nutrient-dense until handoff at your doorstep.
+      </p>
+
+      <div id="delivery-telemetry-pill" class="glass-pill"
+        style="background: rgba(0,0,0,0.65); border-color: rgba(255,255,255,0.25); opacity: 0;">
+        <span style="color: var(--fresh);">● Live GPS Active</span>
+        <span>•</span>
+        <span>Cabin Temp: 12°C</span>
+        <span>•</span>
+        <span>Route: Guntur → Hyderabad</span>
+      </div>
+    </div>
+
+    <!-- Active Road Simulation Track -->
+    <div class="delivery-road-track">
+      <!-- Realistic Photorealistic 3D Delivery Van Chassis -->
+      <div id="realistic-van-container" class="realistic-van-chassis animate-van-suspension">
+        <div class="van-photo-box">
+          <img src="images/photoreal_van.jpg" alt="Photorealistic Mana Rythu Electric Van" />
+        </div>
+
+        <!-- Rotating Wheels with realistic rim & tire physics -->
+        <div id="van-wheel-front" class="wheel-rotating wheel-front"></div>
+        <div id="van-wheel-back" class="wheel-rotating wheel-back"></div>
+
+        <!-- Ground Contact Shadow beneath tires on asphalt -->
+        <div id="van-ground-shadow" class="van-road-shadow"></div>
+      </div>
+
+      <!-- Realistic Delivery Person Exiting with Organic Produce & Rice Bag -->
+      <div id="delivery-driver-person" class="delivery-driver-walker">
+        <img src="images/photoreal_basket.jpg" alt="Driver carrying fresh harvest basket" class="driver-crate-img" />
+      </div>
+
+      <!-- Customer Front Porch Doorway & Doorstep Handover Card -->
+      <div id="doorstep-handover-modal" class="doorstep-handover-card">
+        <img id="customer-front-door" src="images/photoreal_doorstep_handover.jpg"
+          alt="Doorstep Delivery Handover to Happy Indian Customer" />
+        <div class="handover-info">
+          <div class="handover-badge-pill">
+            <span style="color: var(--fresh);">✓</span>
+            <span data-i18n="deliveryVan.handoverBadge">Doorstep Handover Verified</span>
+          </div>
+          <h4 class="handover-family-title">Delivered Fresh: Lotus Residency Veranda</h4>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.75);">
+            Harvested 04:30 AM • Delivered 01:15 PM • Direct Farmer Deposit Confirmed
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. KRISHI AI AGRICULTURAL ADVISOR CHAT
+       ========================================================================= -->
+  <section id="krishi-ai" class="krishi-ai-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 30px;">
+        <div class="glass-pill" style="margin-bottom: 12px;">
+          <span>🤖</span>
+          <span data-i18n="nav.aiAssistant">Krishi AI</span>
+        </div>
+        <h2 class="hero-title" style="font-size: clamp(28px, 4vw, 48px); margin-bottom: 10px;">
+          Ask Krishi AI: Crop Doctor & Direct Mandi Rates
+        </h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">
+          Bilingual agronomy intelligence in Telugu & English. Ask about organic protocols, market prices, or
+          nutritional benefits.
+        </p>
+      </div>
+
+      <!-- Chat Window Card -->
+      <div class="krishi-chat-card">
+        <div class="chat-header-bar">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 22px;">🌾</span>
+            <div>
+              <h4 style="font-size: 15px; font-weight: 800;">Mana Rythu Krishi AI</h4>
+              <span style="font-size: 11px; color: var(--fresh-light);">Active Agronomy Engine • Zero Chemical
+                Guidelines</span>
+            </div>
+          </div>
+          <span class="glass-pill" style="font-size: 11px; padding: 4px 10px;">Bilingual TE/EN</span>
+        </div>
+
+        <div id="krishi-chat-messages" class="chat-messages-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="krishi-typing-indicator"
+          style="display: none; padding: 6px 24px; font-size: 12px; color: var(--harvest);">
+          <span>Krishi AI is typing...</span>
+        </div>
+
+        <!-- Suggestion Pills -->
+        <div class="prompt-suggestions-row">
+          <span class="krishi-prompt-pill" data-prompt="How do I cure leaf curl in chillies naturally?">Chilli leaf
+            curl</span>
+          <span class="krishi-prompt-pill" data-prompt="What are the benefits of Sona Masoori aged rice?">Sona Masoori
+            Rice</span>
+          <span class="krishi-prompt-pill" data-prompt="What are today's tomato prices on Mana Rythu vs Mandi?">Tomato
+            Prices</span>
+          <span class="krishi-prompt-pill" data-prompt="Tell me about Foxtail Millet for diabetes">Foxtail Millet</span>
+        </div>
+
+        <!-- Input Form -->
+        <form id="krishi-chat-form" class="chat-input-bar">
+          <input type="text" id="krishi-input-field" class="chat-input-field"
+            placeholder="Ask in Telugu or English (e.g. పంట రోగాలు, మార్కెట్ ధరలు)..." />
+          <button type="submit" class="chat-send-btn">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. SMART TRANSPARENT PRICING CALCULATOR
+       ========================================================================= -->
+  <section id="smart-pricing" class="smart-pricing-section">
+    <div class="container text-center">
+      <span class="section-tag" data-i18n="smartPricing.badge">Radical 100% Price Transparency</span>
+      <h2 class="section-heading" data-i18n="smartPricing.heading">Where Does Every Single Rupee Go?</h2>
+      <p class="section-desc" data-i18n="smartPricing.subheading">
+        Traditional markets pay farmers a meager 24%. Mana Rythu guarantees 72% directly into the farmer's bank account
+        on the day of delivery.
+      </p>
+
+      <!-- Interactive Order Value Slider -->
+      <div class="pricing-calc-box">
+        <div
+          style="display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; margin-bottom: 6px;">
+          <span data-i18n="smartPricing.testLabel">Simulate Your Monthly Order:</span>
+          <span id="pricing-slider-val" style="color: var(--forest); font-size: 20px;">₹500</span>
+        </div>
+        <input type="range" id="pricing-slider" class="pricing-slider" min="200" max="2500" step="50" value="500" />
+        <div style="display: flex; justify-content: space-between; font-size: 11px; color: #888;">
+          <span>₹200</span>
+          <span>₹1,000</span>
+          <span>₹2,500</span>
+        </div>
+      </div>
+
+      <!-- Comparison Cards: Traditional Mandi vs Mana Rythu -->
+      <div class="pricing-cards-grid">
+        <!-- Mandi Card -->
+        <div class="pricing-compare-card card-mandi">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 800;">Traditional Mandi System
+              </h3>
+              <span
+                style="font-size: 11px; padding: 4px 10px; background: #FFEBEE; color: #C62828; border-radius: 9999px; font-weight: 700;">4-5
+                Middlemen</span>
+            </div>
+            <p style="font-size: 13px; color: #666; margin-bottom: 24px; text-align: left;">
+              Multiple dalals, commission agents, APMC cess, and 18% transit spoilage markups drain farmer profits.
+            </p>
+
+            <div style="text-align: left; margin-bottom: 16px;">
+              <div
+                style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: #C62828;">
+                <span>Farmer receives (24%):</span>
+                <span id="mandi-farmer-share">₹120</span>
+              </div>
+              <div class="price-progress-bar">
+                <div class="bar-fill" style="width: 24%; background: #EF5350;"></div>
+              </div>
+            </div>
+
+            <div style="text-align: left;">
+              <div
+                style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #555;">
+                <span>Middlemen & Spoilage (76%):</span>
+                <span id="mandi-middlemen-share">₹380</span>
+              </div>
+              <div class="price-progress-bar">
+                <div class="bar-fill" style="width: 76%; background: #BDBDBD;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mana Rythu Card -->
+        <div class="pricing-compare-card card-mana">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 800; color: var(--forest-dark);">
+                Mana Rythu Direct</h3>
+              <span
+                style="font-size: 11px; padding: 4px 10px; background: rgba(128,188,65,0.2); color: var(--forest); border-radius: 9999px; font-weight: 800;">72%
+                Guaranteed</span>
+            </div>
+            <p style="font-size: 13px; color: #555; margin-bottom: 24px; text-align: left;">
+              Direct farm gate collection and direct bank transfer on the afternoon of delivery. Zero middlemen.
+            </p>
+
+            <div style="text-align: left; margin-bottom: 16px;">
+              <div
+                style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: var(--forest);">
+                <span>Farmer receives directly (72%):</span>
+                <span id="mana-farmer-share" style="font-size: 18px; color: var(--fresh);">₹360</span>
+              </div>
+              <div class="price-progress-bar">
+                <div class="bar-fill" style="width: 72%; background: var(--fresh);"></div>
+              </div>
+            </div>
+
+            <div
+              style="text-align: left; background: rgba(128,188,65,0.1); padding: 12px 16px; border-radius: 14px; margin-top: 14px;">
+              <span style="font-size: 12px; font-weight: 700; color: var(--forest);">Farmer's Extra Gain with Mana
+                Rythu:</span>
+              <span id="farmer-extra-gain"
+                style="float: right; font-weight: 900; color: var(--forest-dark); font-size: 16px;">+₹240</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. SEASONAL HARVEST CALENDAR (Kharif, Rabi, Zaid)
+       ========================================================================= -->
+  <section id="seasonal-harvest" class="seasonal-harvest-section">
+    <div class="container text-center">
+      <div class="glass-pill" style="margin-bottom: 12px;">
+        <span>📅</span>
+        <span data-i18n="seasonal.badge">Biorhythmic Agriculture</span>
+      </div>
+      <h2 class="hero-title" style="font-size: clamp(28px, 4vw, 48px); margin-bottom: 10px;"
+        data-i18n="seasonal.heading">
+        Nature's Seasonal Harvest Rhythm
+      </h2>
+      <p style="color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;" data-i18n="seasonal.subheading">
+        Aligning your diet with Kharif, Rabi, and Zaid seasons for peak nutrition and flavor.
+      </p>
+
+      <!-- Season Tabs Switcher -->
+      <div class="season-tabs-row" style="margin-top: 36px;">
+        <button class="season-tab-btn" data-season="kharif">Kharif (Monsoon)</button>
+        <button class="season-tab-btn active" data-season="rabi">Rabi (Winter Dew)</button>
+        <button class="season-tab-btn" data-season="zaid">Zaid (Summer Sweet)</button>
+      </div>
+
+      <!-- Active Season Content Box -->
+      <div id="season-content-container" style="max-width: 820px; margin: 0 auto;">
+        <!-- Rendered dynamically via js/harvest-tabs.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       12. CLOSING CTA SECTION
+       ========================================================================= -->
+  <section id="closing-cta" class="closing-cta-section">
+    <div class="hero-bg-wrapper">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=85"
+        alt="Golden Sunset Farm" class="hero-bg-img" />
+      <div class="cinematic-overlay-dark"></div>
+    </div>
+
+    <div class="container text-center" style="position: relative; z-index: 10; margin: auto 0;">
+      <div style="font-size: 38px; margin-bottom: 16px;">🌱</div>
+      <p class="hero-subheading-te" style="font-size: 22px;">
+        కలసికట్టుగా... రైతు రాజ్యం వైపు అడుగులేద్దాం
+      </p>
+      <h2 class="hero-title" style="font-size: clamp(32px, 5vw, 64px); max-width: 820px; margin: 0 auto 20px auto;"
+        data-i18n="closingCTA.heading">
+        Ready for Produce That Honors Both Earth and Farmer?
+      </h2>
+      <p class="hero-description" style="margin: 0 auto 36px auto;" data-i18n="closingCTA.subheading">
+        Join 45,000+ conscious families who receive genuine farm-fresh nutrition while empowering rural agricultural
+        communities.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="shop.html" class="btn-primary" data-i18n="closingCTA.ctaShop">
+          Order Today's Fresh Harvest →
+        </a>
+        <a href="farmers.html" class="btn-secondary" data-i18n="closingCTA.ctaFarmer">
+          Connect With a Farmer 🌾
+        </a>
+      </div>
+
+      <div class="glass-pill" style="margin-top: 24px; font-size: 12px;">
+        <span>🛡️</span>
+        <span>72% Direct Farmer Revenue Guarantee • Zero Chemical Intermediaries</span>
+      </div>
+    </div>
+
+    <!-- Final Sprout on Horizon -->
+    <div id="closing-sprout"
+      style="position: relative; z-index: 10; display: flex; justify-content: center; margin-top: 30px;">
+      <div class="heritage-seed-pill" style="width: 70px; height: 70px; border-color: var(--fresh);">
+        <img src="images/photoreal_sprout.jpg" alt="Living sprout on sunset horizon" />
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-badge">🌱</div>
+            <span class="brand-name">Mana Rythu</span>
+          </div>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 14px;">
+            India's most transparent direct farmer-to-consumer agricultural movement. Preserving indigenous heirloom
+            seeds and empowering rural families.
+          </p>
+          <div style="color: var(--harvest); font-family: var(--font-telugu); font-size: 13px; font-weight: 700;">
+            రైతు నవ్వింది... నేల పండింది... దేశం వెలిగింది.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Marketplace</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html">Today's Dawn Harvest</a></li>
+            <li><a href="shop.html?cat=vegetables">Heirloom Vegetables</a></li>
+            <li><a href="shop.html?cat=grains">Single-Origin Rice</a></li>
+            <li><a href="shop.html?cat=dairy_millets">A2 Gir Cow Ghee</a></li>
+            <li><a href="shop.html?cat=fruits">Carbide-Free Mangoes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Farmers & Story</h4>
+          <ul class="footer-links">
+            <li><a href="farmers.html">Meet Verified Farmers</a></li>
+            <li><a href="#seed-to-plant">Soil-to-Plant Journey</a></li>
+            <li><a href="#how-it-works">Cold-Chain Logistics</a></li>
+            <li><a href="#smart-pricing">72% Revenue Model</a></li>
+            <li><a href="#krishi-ai">Krishi AI Agronomy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Dawn Harvest Alerts</h4>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">
+            Get notified at 5:00 AM when fresh country tomatoes, raw honey, and green leafy vegetables are harvested.
+          </p>
+          <form onsubmit="event.preventDefault(); alert('Subscribed to Dawn Harvest alerts!');"
+            style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Enter email or WhatsApp..." required
+              style="flex: 1; padding: 10px 14px; border-radius: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #FFF; font-size: 12px; outline: none;" />
+            <button type="submit"
+              style="padding: 10px 18px; border-radius: 10px; background: var(--fresh); color: var(--forest-dark); font-weight: 800; font-size: 12px;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div
+        style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; gap: 12px;">
+        <span>© 2026 Mana Rythu Direct Agricultural Platform. All rights reserved.</span>
+        <span>Built with pure HTML5, CSS3, & Vanilla JavaScript • 72% Direct Farmer Settlement</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       CART SLIDE-OVER DRAWER & BACKDROP
+       ========================================================================= -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 24px;">🧺</span>
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 17px; font-weight: 800;">Your Harvest Basket</h3>
+          <span style="font-size: 11px; color: var(--earth);">Fresh from morning fields</span>
+        </div>
+      </div>
+      <button id="cart-drawer-close" style="font-size: 20px; color: #888;" title="Close drawer">✕</button>
+    </div>
+
+    <!-- Empty state -->
+    <div id="cart-drawer-empty"
+      style="flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center;">
+      <span style="font-size: 54px; margin-bottom: 12px;">🌱</span>
+      <h4 style="font-family: var(--font-serif); font-size: 18px; font-weight: 800; margin-bottom: 6px;">Your Harvest
+        Basket is Empty</h4>
+      <p style="font-size: 13px; color: var(--earth); margin-bottom: 20px;">Explore today's dawn harvests and support
+        local regenerative farmers.</p>
+      <a href="shop.html" class="btn-primary" style="padding: 10px 24px; font-size: 13px;">Explore Harvests</a>
+    </div>
+
+    <!-- Items list -->
+    <div id="cart-drawer-items" class="cart-drawer-items">
+      <!-- Rendered dynamically via js/cart.js -->
+    </div>
+
+    <!-- Summary & Checkout bar -->
+    <div id="cart-drawer-summary" class="cart-drawer-summary">
+      <!-- Rendered dynamically via js/cart.js -->
+    </div>
+  </aside>
+
+  <!-- Toast Notification container -->
+  <div id="mana-toast" class="mana-toast"></div>
+
+  <!-- App Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/krishi-ai.js"></script>
+  <script src="js/pricing-slider.js"></script>
+  <script src="js/harvest-tabs.js"></script>
+  <script src="js/scroll-animations.js"></script>
+
+  <!-- Homepage Dynamic Grid Initializer -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Render Categories Grid
+      const catContainer = document.getElementById("categories-grid-container");
+      if (catContainer && typeof farmCategories !== "undefined") {
+        const isTe = window.manaLanguage ? window.manaLanguage.isTelugu : false;
+        catContainer.innerHTML = farmCategories.map(cat => `
+          <div class="category-card">
+            <div>
+              <div class="category-icon-box" style="background: ${cat.color}25; color: ${cat.color};">
+                ${cat.icon}
+              </div>
+              <h3 class="category-name">${isTe && cat.nameTe ? cat.nameTe : cat.name}</h3>
+              <p class="category-desc">${cat.description}</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #EEE; padding-top: 12px;">
+              <span style="font-size: 12px; font-weight: 700; color: ${cat.color};">${cat.badge}</span>
+              <a href="shop.html?cat=${cat.id}" style="font-size: 12px; font-weight: 800; color: var(--forest);">View Items →</a>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // 2. Render Featured Products Grid
+      const prodContainer = document.getElementById("products-grid-container");
+      function renderFeaturedProducts(categoryFilter = "all", searchQuery = "") {
+        if (!prodContainer || typeof productsData === "undefined") return;
+        const isTe = window.manaLanguage ? window.manaLanguage.isTelugu : false;
+
+        const filtered = productsData.filter(p => {
+          const matchCat = categoryFilter === "all" ||
+            (categoryFilter === "dairy_millets" ? (p.category === "dairy_millets" || p.category === "spices") : p.category === categoryFilter);
+          const matchSearch = !searchQuery.trim() ||
+            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.nameTe.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.farmerName.toLowerCase().includes(searchQuery.toLowerCase());
+          return matchCat && matchSearch;
+        });
+
+        prodContainer.innerHTML = filtered.map(prod => {
+          const title = isTe && prod.nameTe ? prod.nameTe : prod.name;
+          const isFav = window.manaWishlist && window.manaWishlist.has(prod.id);
+          return `
+            <div class="product-card" data-id="${prod.id}">
+              <div class="product-img-box">
+                <img src="${prod.image}" alt="${title}" loading="lazy" />
+                <span class="product-badge-tag">${prod.badges[0]}</span>
+                <button class="wishlist-heart-btn ${isFav ? 'active' : ''}" onclick="manaWishlist.toggle(productsData.find(p=>p.id==='${prod.id}')); this.classList.toggle('active');" title="Save">
+                  ♥
+                </button>
+              </div>
+              <div class="product-card-body">
+                <div>
+                  <h3 class="product-title">${title}</h3>
+                  <div class="product-farmer-meta">
+                    👨‍🌾 ${prod.farmerName} • <span style="color: var(--fresh-light);">${prod.farmDistance}</span>
+                  </div>
+                  <div class="product-price-row">
+                    <span class="product-current-price">₹${prod.price}</span>
+                    <span style="font-size: 13px; color: rgba(255,255,255,0.7);">/ ${prod.unit}</span>
+                    <span class="product-original-price">₹${prod.originalPrice}</span>
+                  </div>
+                </div>
+                <button class="add-cart-action-btn" onclick="manaCart.addToCart(productsData.find(p=>p.id==='${prod.id}'), 1, event)">
+                  <span>🧺 Add to Harvest Basket</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      renderFeaturedProducts();
+
+      // Category filter buttons
+      document.querySelectorAll(".filter-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          const searchVal = document.getElementById("marketplace-search-input")?.value || "";
+          renderFeaturedProducts(btn.getAttribute("data-category"), searchVal);
+        });
+      });
+
+      // Search input
+      const searchInput = document.getElementById("marketplace-search-input");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          const activeBtn = document.querySelector(".filter-tab-btn.active");
+          const activeCat = activeBtn ? activeBtn.getAttribute("data-category") : "all";
+          renderFeaturedProducts(activeCat, e.target.value);
+        });
+      }
+
+      window.addEventListener("languageChanged", () => {
+        const activeBtn = document.querySelector(".filter-tab-btn.active");
+        const activeCat = activeBtn ? activeBtn.getAttribute("data-category") : "all";
+        const searchVal = document.getElementById("marketplace-search-input")?.value || "";
+        renderFeaturedProducts(activeCat, searchVal);
+      });
+    });
+  </script>
+</body>
+
+</html>
