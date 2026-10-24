@@ -10,6 +10,7 @@ import { sampleProducts, Product } from "@/data/products";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/layout/CartDrawer";
+import { assetPath } from "@/lib/site";
 import {
   Search,
   Filter,
@@ -37,7 +38,7 @@ export default function ShopPage() {
   const [addedItemAnim, setAddedItemAnim] = useState<string | null>(null);
 
   const productPhotos: Record<string, string> = {
-    p1: "/images/photoreal_tomato.jpg",
+    p1: assetPath("/images/photoreal_tomato.jpg"),
     p2: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80",
     p3: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
     p4: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=80",
@@ -196,7 +197,8 @@ export default function ShopPage() {
             {filteredProducts.map((product) => {
               const isFav = isInWishlist(product.id);
               const isJustAdded = addedItemAnim === product.id;
-              const photoUrl = productPhotos[product.id] || "/images/photoreal_tomato.jpg";
+              const photoUrl =
+                productPhotos[product.id] || assetPath("/images/photoreal_tomato.jpg");
 
               return (
                 <div

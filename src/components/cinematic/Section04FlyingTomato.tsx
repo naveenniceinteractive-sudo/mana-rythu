@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { Sparkles, Clock, MapPin, Gauge } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section04FlyingTomato() {
   const { t, isTelugu } = useLanguage();
@@ -185,7 +186,7 @@ export function Section04FlyingTomato() {
             >
               <div className="relative w-full h-full rounded-full overflow-hidden bg-white/95 p-2 border-2 border-[#E53935] shadow-2xl">
                 <Image
-                  src="/images/photoreal_tomato.jpg"
+                  src={assetPath("/images/photoreal_tomato.jpg")}
                   alt="Real Photorealistic Heirloom Tomato"
                   fill
                   sizes="(max-width: 768px) 180px, 240px"

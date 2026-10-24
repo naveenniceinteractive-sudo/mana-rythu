@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCart } from "@/context/CartContext";
 import { sampleProducts, Product } from "@/data/products";
+import { assetPath } from "@/lib/site";
 import {
   ShoppingBag,
   Star,
@@ -23,7 +24,7 @@ export function Section06FeaturedProducts() {
   const [addedItemAnim, setAddedItemAnim] = useState<string | null>(null);
 
   const productPhotos: Record<string, string> = {
-    p1: "/images/photoreal_tomato.jpg",
+    p1: assetPath("/images/photoreal_tomato.jpg"),
     p2: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80",
     p3: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
     p4: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=80",
@@ -121,7 +122,8 @@ export function Section06FeaturedProducts() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product) => {
             const isJustAdded = addedItemAnim === product.id;
-            const photoUrl = productPhotos[product.id] || "/images/photoreal_tomato.jpg";
+            const photoUrl =
+              productPhotos[product.id] || assetPath("/images/photoreal_tomato.jpg");
 
             return (
               <div

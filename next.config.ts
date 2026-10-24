@@ -1,9 +1,17 @@
 import type { NextConfig } from "next";
 
+const githubPagesBasePath =
+  process.env.GITHUB_PAGES === "true" ? "/mana-rythu" : "";
+
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  output: "export",
+  trailingSlash: true,
+  basePath: githubPagesBasePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: githubPagesBasePath,
+  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

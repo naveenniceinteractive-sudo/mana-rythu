@@ -3,6 +3,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
+import { assetPath } from "@/lib/site";
 
 export function ContinuousSeedPlant() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -270,7 +271,7 @@ export function ContinuousSeedPlant() {
             title="Heritage Heirloom Seed - Direct living lineage"
           >
             <Image
-              src="/images/photoreal_seed.jpg"
+              src={assetPath("/images/photoreal_seed.jpg")}
               alt="Heritage Heirloom Seed"
               fill
               sizes="90px"

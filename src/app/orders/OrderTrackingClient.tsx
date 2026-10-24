@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
@@ -19,8 +19,8 @@ import {
 } from "lucide-react";
 
 export default function OrderTrackingPage() {
-  const params = useParams();
-  const orderId = (params?.id as string) || "MR-839210";
+  const searchParams = useSearchParams();
+  const orderId = searchParams.get("id") ?? "MR-839210";
 
   const timelineSteps = [
     {

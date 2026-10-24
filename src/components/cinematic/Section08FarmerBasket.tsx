@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { ShoppingBasket, Check, Heart } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section08FarmerBasket() {
   const { t, isTelugu } = useLanguage();
@@ -163,7 +164,7 @@ export function Section08FarmerBasket() {
           >
             <div className="relative w-full h-full rounded-full overflow-hidden bg-white/95 p-1 border-2 border-[#E53935] shadow-2xl">
               <Image
-                src="/images/photoreal_tomato.jpg"
+                src={assetPath("/images/photoreal_tomato.jpg")}
                 alt="Photoreal Tomato Landing"
                 fill
                 sizes="112px"
@@ -178,7 +179,7 @@ export function Section08FarmerBasket() {
             className="relative w-88 sm:w-[480px] h-80 sm:h-[420px] rounded-3xl overflow-hidden bg-white/95 p-4 border-2 border-[#E8AE42]/80 shadow-[0_32px_72px_rgba(0,0,0,0.85)] filter backdrop-blur-md"
           >
             <Image
-              src="/images/photoreal_basket.jpg"
+              src={assetPath("/images/photoreal_basket.jpg")}
               alt="Real Photorealistic Harvest Basket"
               fill
               sizes="(max-width: 768px) 360px, 480px"

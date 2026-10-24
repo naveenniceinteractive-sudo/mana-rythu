@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { Truck, Zap, MapPin } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section10DeliveryVan() {
   const { t, isTelugu } = useLanguage();
@@ -72,7 +73,7 @@ export function Section10DeliveryVan() {
         className="absolute inset-0 w-[125%] h-full -left-[10%] pointer-events-none"
       >
         <Image
-          src="/images/photoreal_van_road.jpg"
+          src={assetPath("/images/photoreal_van_road.jpg")}
           alt="Mana Rythu Electric Van on Countryside Road"
           fill
           priority
@@ -124,7 +125,7 @@ export function Section10DeliveryVan() {
       >
         <div className="relative w-88 sm:w-[540px] md:w-[620px] h-52 sm:h-[320px] rounded-3xl overflow-hidden bg-white/95 p-3 border-2 border-[#80BC41]/60 shadow-[0_24px_64px_rgba(0,0,0,0.8)] backdrop-blur-md">
           <Image
-            src="/images/photoreal_van.jpg"
+            src={assetPath("/images/photoreal_van.jpg")}
             alt="Real Photorealistic Electric Farm Delivery Van"
             fill
             sizes="(max-width: 768px) 360px, 620px"

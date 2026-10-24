@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { Droplet, Sun, Sparkles } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section02SeedToPlant() {
   const { t, isTelugu } = useLanguage();
@@ -72,7 +73,7 @@ export function Section02SeedToPlant() {
         className="absolute inset-0 w-full h-[120%] -top-[10%] pointer-events-none"
       >
         <Image
-          src="/images/photoreal_field_soil.jpg"
+          src={assetPath("/images/photoreal_field_soil.jpg")}
           alt="Photorealistic Indian Farm Field Fertile Soil at Sunrise"
           fill
           priority

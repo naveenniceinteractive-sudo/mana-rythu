@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { Home, ArrowRight, ShieldCheck } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section11HomeDelivery() {
   const { t, isTelugu } = useLanguage();
@@ -118,7 +119,7 @@ export function Section11HomeDelivery() {
             className="relative w-96 sm:w-[480px] h-72 sm:h-80 rounded-3xl overflow-hidden bg-white/95 p-2 border-2 border-[#E8AE42] shadow-[0_32px_64px_rgba(0,0,0,0.85)] filter backdrop-blur-md cursor-pointer"
           >
             <Image
-              src="/images/photoreal_doorstep_handover.jpg"
+              src={assetPath("/images/photoreal_doorstep_handover.jpg")}
               alt="Real Photorealistic Harvest Doorstep Handover"
               fill
               sizes="(max-width: 768px) 384px, 480px"

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { initGSAP } from "@/lib/gsap";
 import { useLanguage } from "@/context/LanguageContext";
 import { Sprout, ArrowRight, ShieldCheck, HeartHandshake } from "lucide-react";
+import { assetPath } from "@/lib/site";
 
 export function Section16ClosingCTA() {
   const { t, isTelugu } = useLanguage();
@@ -112,7 +113,7 @@ export function Section16ClosingCTA() {
           className="relative w-28 h-28 rounded-2xl overflow-hidden bg-white/90 p-2 border-2 border-[#80BC41] shadow-[0_20px_40px_rgba(0,0,0,0.8)] filter backdrop-blur-md"
         >
           <Image
-            src="/images/photoreal_sprout.jpg"
+            src={assetPath("/images/photoreal_sprout.jpg")}
             alt="Living Sprout on Horizon"
             fill
             sizes="112px"

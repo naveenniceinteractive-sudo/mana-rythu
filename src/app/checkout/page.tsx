@@ -60,7 +60,7 @@ export default function CheckoutPage() {
     setTimeout(() => {
       const orderId = "MR-" + Math.floor(100000 + Math.random() * 900000);
       clearCart();
-      router.push(`/orders/${orderId}`);
+      router.push(`/orders/?id=${encodeURIComponent(orderId)}`);
     }, 1800);
   };
 
